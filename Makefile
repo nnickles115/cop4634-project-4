@@ -2,7 +2,7 @@
 CXX = g++
 
 # Compiler flags
-CXXFLAGS = -g -Wall -std=c++11 -O0
+CXXFLAGS = -g -Wall -std=c++11 -O0 -Wno-unused-but-set-variable
 
 # Ouput file
 TARGET = matrix

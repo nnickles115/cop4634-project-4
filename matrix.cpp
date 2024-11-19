@@ -107,13 +107,25 @@ void printErrors() {
  * and measure the times.
  */
 int main(int argc, char** argv) {
+    // Print error if no flags are passed
     if(argc < 2) {
         std::cerr << "Usage: ./matrix <operation>\n";
         printErrors();
         return 1;
     }
 
-    int operation = std::stoi(argv[1]);
+    // Prevent non-integer user input from crashing the program
+    int operation;
+    try {
+        operation = std::stoi(argv[1]);
+    }
+    catch(const std::exception& e) {
+        std::cerr << "Usage: ./matrix <operation>\n";
+        printErrors();
+        return 1;
+    }
+    
+    // Select matrix operation based on user input
     switch(operation) {
         case 1:
             measure(writeRow, "Write Row-Major");
